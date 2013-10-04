@@ -46,7 +46,10 @@ class Zwig_Environment extends Twig_Environment
         }
 
         $function = new Zwig_Function_ViewHelper($name, $helper);
+        $val = $this->extensionInitialized;
+        $this->extensionInitialized = false;
         $this->addFunction($name, $function);
+        $this->extensionInitialized = $val;
 
         return $function;
     }
