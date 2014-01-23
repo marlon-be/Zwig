@@ -19,11 +19,16 @@ class Zwig_Environment extends Twig_Environment
 {
     public $view;
 
-    public function __construct(Zwig_View $view, Twig_LoaderInterface $loader = null, $options = array()) {
+    public function __construct(Zwig_View $view = null, Twig_LoaderInterface $loader = null, $options = array()) {
 
         parent::__construct($loader, $options);
 
         $this->addExtension(new Zwig_Extension($this));
+        $this->view = $view;
+    }
+
+    public function setView($view)
+    {
         $this->view = $view;
     }
 
